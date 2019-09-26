@@ -1,0 +1,31 @@
+options {
+	STATIC = false;
+}
+PARSER_BEGIN(Analisador)
+	class Analisador {
+		static public void main(String[] args)
+		throws ParseException, TokenMsgError {
+			Analisador parser = new Analisador(System.in);
+			parser.Start();
+		}
+	}
+PARSER_END(Analisador)
+
+SKIP : { " "
+       | "\t"
+       }     
+SKIP : { "\n"
+       | "\r"
+       | "\r\n" }
+TOKEN : { < PALAVRA_RESERVADA : "def" | "for" | "in" > }
+TOKEN : { < CONSTANTE : (["0"-"9"])+ >}
+TOKEN : { < SIMBOLO : "(" | ")" | "[" | "]" | "=" | ":" | "," | "\"" | "%"}
+TOKEN : { < LITERAL : "%d"}
+TOKEN : { < IDENTIFICADOR : (["a"-"z"]["a"-"z""A"-"Z"|"0"-"9"]*)}
+TOKEN : { < COMENTARIO : ("#"["a"-"z""A"-"Z""0"-"9"]*)}
+
+void Start() :
+{}
+{
+	
+}
